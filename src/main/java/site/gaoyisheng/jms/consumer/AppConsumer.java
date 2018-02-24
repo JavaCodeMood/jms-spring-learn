@@ -1,10 +1,10 @@
 /*
- * file_name: AppProducer.java
+ * file_name: AppConsumer.java
  *
  * Copyright GaoYisheng Corporation 2017
  *
  * License：
- * date： 2018年2月24日 下午3:34:43
+ * date： 2018年2月24日 下午7:58:39
  *       https://www.gaoyisheng.site
  *       https://github.com/timo1160139211
  *
@@ -14,20 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package site.gaoyisheng.jms.producer;
+package site.gaoyisheng.jms.consumer;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class AppProducer {
-
+public class AppConsumer {
+	
 	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("producer.xml");
-		ProducerService service = context.getBean(ProducerService.class);
-
-		for (int i = 0; i < 100; i++) {
-			service.sendMessage("test-topic" + i);
-		}
-		
-		context.close();
+		ApplicationContext context = new ClassPathXmlApplicationContext("consumer.xml");
 	}
 }

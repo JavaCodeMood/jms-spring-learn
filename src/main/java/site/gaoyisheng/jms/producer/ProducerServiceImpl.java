@@ -32,10 +32,11 @@ public class ProducerServiceImpl implements ProducerService {
 	@Autowired
 	JmsTemplate jmsTemplate;
 
-	@Resource(name = "queueDestination")
+	//@Resource(name = "queueDestination")
+	@Resource(name = "topicDestination")
 	Destination destination;
 
-	public void sendMessage(String message) {
+	public void sendMessage(final String message) {
 		//使用jmsTemplate发送消息
 		jmsTemplate.send(destination, new MessageCreator() {
 			//创建一个消息
